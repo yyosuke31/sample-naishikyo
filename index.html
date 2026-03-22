@@ -1,0 +1,2437 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>セカンドラボ 内視鏡クリニック - 柏駅西口から徒歩1分</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600;700&family=Noto+Serif+JP:wght@400;700&family=Noto+Sans+JP:wght@400;500;700&family=NanumMyeongjo:wght@400;700;800&family=Qwitcher+Grypen:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary-navy: #213166;
+            --gold: #887943;
+            --light-gold: #E1D29A;
+            --background: #F2F6F9;
+            --text-dark: #1E2026;
+            --white: #FFFFFF;
+            --green: #4CAF50;
+            --orange: #FF9800;
+            --red: #C44444;
+        }
+
+        body {
+            font-family: 'Noto Sans JP', sans-serif;
+            color: var(--text-dark);
+            background-color: var(--white);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* HEADER */
+        header {
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            background-color: var(--white);
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .header-top {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 80px;
+            padding: 0 40px;
+            border-bottom: 1px solid rgba(33, 49, 102, 0.1);
+        }
+
+        .header-left {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .header-access {
+            font-size: 12px;
+            color: var(--text-dark);
+            font-weight: 500;
+        }
+
+        .clinic-name {
+            font-family: 'Noto Serif JP', serif;
+            font-size: 18px;
+            font-weight: 700;
+            color: var(--primary-navy);
+            letter-spacing: 0.5px;
+        }
+
+        .header-right {
+            display: flex;
+            align-items: center;
+            gap: 30px;
+        }
+
+        .header-contact {
+            text-align: right;
+        }
+
+        .phone-number {
+            font-size: 18px;
+            font-weight: 700;
+            color: var(--primary-navy);
+            font-family: 'NanumMyeongjo', serif;
+            letter-spacing: 1px;
+        }
+
+        .hours-info {
+            font-size: 11px;
+            color: #666;
+            margin-top: 4px;
+        }
+
+        .header-buttons {
+            display: flex;
+            gap: 10px;
+        }
+
+        .btn-line {
+            background-color: var(--green);
+            color: var(--white);
+            border: none;
+            padding: 8px 16px;
+            border-radius: 5px;
+            font-size: 12px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .btn-line:hover {
+            background-color: #45a049;
+        }
+
+        .btn-reserve {
+            background-color: var(--orange);
+            color: var(--white);
+            border: none;
+            padding: 8px 20px;
+            border-radius: 5px;
+            font-size: 12px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .btn-reserve:hover {
+            background-color: #e68900;
+        }
+
+        /* NAVIGATION */
+        nav {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 71px;
+            background-color: var(--white);
+            border-bottom: 1px solid rgba(33, 49, 102, 0.1);
+        }
+
+        .nav-container {
+            display: flex;
+            gap: 50px;
+            max-width: 1240px;
+            width: 100%;
+            padding: 0 40px;
+        }
+
+        .nav-item {
+            text-align: center;
+            cursor: pointer;
+            transition: color 0.3s;
+        }
+
+        .nav-item-jp {
+            font-family: 'Noto Serif JP', serif;
+            font-size: 14px;
+            font-weight: 600;
+            color: var(--primary-navy);
+            letter-spacing: 0.3px;
+        }
+
+        .nav-item-en {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 12px;
+            color: var(--gold);
+            margin-top: 2px;
+            letter-spacing: 1px;
+        }
+
+        .nav-item:hover .nav-item-jp {
+            color: var(--gold);
+        }
+
+        /* HERO SLIDER */
+        .hero {
+            position: relative;
+            height: 850px;
+            background-color: var(--background);
+            overflow: hidden;
+        }
+
+        .hero-slide {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            opacity: 0;
+            transition: opacity 0.8s ease-in-out;
+            display: flex;
+            align-items: center;
+        }
+
+        .hero-slide.active {
+            opacity: 1;
+        }
+
+        .hero-slide-bg {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background-size: cover;
+            background-position: center;
+            z-index: 1;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            padding: 0 70px;
+        }
+
+        .hero-text {
+            flex: 1;
+        }
+
+        .hero-title {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 64px;
+            font-weight: 700;
+            color: var(--primary-navy);
+            line-height: 1.2;
+            margin-bottom: 30px;
+            letter-spacing: 2px;
+        }
+
+        .hero-subtitle {
+            font-family: 'Noto Serif JP', serif;
+            font-size: 18px;
+            color: var(--primary-navy);
+            line-height: 1.8;
+            max-width: 400px;
+            font-weight: 500;
+        }
+
+        .hero-badge {
+            position: absolute;
+            right: 70px;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 310px;
+            height: 310px;
+            border-radius: 50%;
+            background-color: var(--white);
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.15);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
+
+        .hero-badge img {
+            width: 280px;
+            height: 280px;
+            object-fit: contain;
+        }
+
+        .hero-info-box {
+            position: absolute;
+            bottom: 140px;
+            left: 70px;
+            background-color: var(--white);
+            padding: 25px 30px;
+            border-radius: 8px;
+            max-width: 350px;
+            z-index: 3;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .info-label {
+            background-color: var(--primary-navy);
+            color: var(--white);
+            padding: 6px 12px;
+            border-radius: 3px;
+            font-size: 12px;
+            font-weight: 700;
+            display: inline-block;
+            margin-bottom: 15px;
+            letter-spacing: 0.5px;
+        }
+
+        .info-items {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .info-item {
+            font-size: 14px;
+            color: var(--text-dark);
+            padding-left: 20px;
+            position: relative;
+        }
+
+        .info-item::before {
+            content: '●';
+            position: absolute;
+            left: 0;
+            color: var(--gold);
+        }
+
+        .hero-indicators {
+            position: absolute;
+            bottom: 30px;
+            left: 70px;
+            display: flex;
+            gap: 15px;
+            z-index: 3;
+        }
+
+        .indicator {
+            font-family: 'NanumMyeongjo', serif;
+            font-size: 18px;
+            font-weight: 700;
+            color: rgba(33, 49, 102, 0.3);
+            cursor: pointer;
+            transition: color 0.3s;
+        }
+
+        .indicator.active {
+            color: var(--primary-navy);
+        }
+
+        .scroll-text {
+            position: absolute;
+            bottom: 30px;
+            left: 50%;
+            transform: translateX(-50%);
+            text-align: center;
+            z-index: 3;
+        }
+
+        .scroll-label {
+            font-size: 12px;
+            color: var(--primary-navy);
+            letter-spacing: 1px;
+            margin-bottom: 10px;
+        }
+
+        .scroll-line {
+            width: 1px;
+            height: 30px;
+            background-color: var(--primary-navy);
+            margin: 0 auto;
+            animation: scroll-pulse 2s infinite;
+        }
+
+        @keyframes scroll-pulse {
+            0%, 100% {
+                opacity: 0.5;
+            }
+            50% {
+                opacity: 1;
+            }
+        }
+
+        .hero-banner {
+            position: absolute;
+            bottom: 0;
+            right: 0;
+            width: 600px;
+            height: 140px;
+            z-index: 3;
+        }
+
+        .hero-banner img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        /* BANNER LINKS SECTION */
+        .banner-section {
+            background-color: var(--white);
+            padding: 70px 40px;
+            display: flex;
+            justify-content: center;
+        }
+
+        .banner-container {
+            max-width: 1240px;
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            gap: 40px;
+        }
+
+        .banner-link {
+            width: 100%;
+            height: 200px;
+            border-radius: 8px;
+            overflow: hidden;
+            cursor: pointer;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .banner-link:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+        }
+
+        .banner-link img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        /* NEWS SECTION */
+        .news-section {
+            background-color: var(--white);
+            padding: 70px 40px;
+            display: flex;
+            justify-content: center;
+        }
+
+        .news-container {
+            max-width: 1240px;
+            width: 100%;
+            display: grid;
+            grid-template-columns: 300px 1fr;
+            gap: 80px;
+            align-items: start;
+        }
+
+        .news-header {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .section-title-en {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 64px;
+            font-weight: 700;
+            color: var(--primary-navy);
+            letter-spacing: 2px;
+            line-height: 1;
+        }
+
+        .section-title-jp {
+            font-family: 'Noto Serif JP', serif;
+            font-size: 22px;
+            font-weight: 700;
+            color: var(--primary-navy);
+            letter-spacing: 0.5px;
+        }
+
+        .btn-view-all {
+            background-color: var(--primary-navy);
+            color: var(--white);
+            border: none;
+            padding: 15px 40px;
+            border-radius: 5px;
+            font-size: 14px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            width: 180px;
+            height: 50px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            letter-spacing: 0.5px;
+        }
+
+        .btn-view-all:hover {
+            background-color: #1a2452;
+        }
+
+        .news-list {
+            display: flex;
+            flex-direction: column;
+            gap: 25px;
+        }
+
+        .news-item {
+            padding-bottom: 25px;
+            border-bottom: 1px solid rgba(33, 49, 102, 0.3);
+            display: flex;
+            align-items: flex-start;
+            gap: 20px;
+        }
+
+        .news-item:last-child {
+            border-bottom: none;
+            padding-bottom: 0;
+        }
+
+        .news-date {
+            font-family: 'NanumMyeongjo', serif;
+            font-size: 14px;
+            color: var(--gold);
+            font-weight: 700;
+            white-space: nowrap;
+            padding-top: 2px;
+        }
+
+        .news-content {
+            flex: 1;
+        }
+
+        .news-tag {
+            display: inline-block;
+            background-color: var(--gold);
+            color: var(--white);
+            padding: 4px 10px;
+            border-radius: 3px;
+            font-size: 11px;
+            font-weight: 700;
+            margin-bottom: 8px;
+            letter-spacing: 0.3px;
+        }
+
+        .news-title {
+            font-size: 15px;
+            color: var(--text-dark);
+            line-height: 1.6;
+            font-weight: 500;
+            margin-bottom: 8px;
+        }
+
+        .news-arrow {
+            color: var(--gold);
+            font-size: 14px;
+        }
+
+        /* BLOG SECTION */
+        .blog-section {
+            background-color: var(--white);
+            padding: 70px 40px;
+            display: flex;
+            justify-content: center;
+        }
+
+        .blog-container {
+            max-width: 1240px;
+            width: 100%;
+        }
+
+        .blog-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-end;
+            margin-bottom: 50px;
+        }
+
+        .blog-title-group {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .blog-header-en {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 64px;
+            font-weight: 700;
+            color: var(--primary-navy);
+            letter-spacing: 2px;
+        }
+
+        .blog-header-jp {
+            font-family: 'Noto Serif JP', serif;
+            font-size: 22px;
+            font-weight: 700;
+            color: var(--primary-navy);
+            letter-spacing: 0.5px;
+        }
+
+        .blog-cards {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 47px;
+        }
+
+        .blog-card {
+            background-color: var(--white);
+            border-radius: 8px;
+            overflow: hidden;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .blog-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+        }
+
+        .blog-thumbnail {
+            width: 100%;
+            height: 200px;
+            background-color: #f0f0f0;
+            overflow: hidden;
+        }
+
+        .blog-thumbnail img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .blog-card-content {
+            padding: 20px;
+        }
+
+        .blog-card-date {
+            font-family: 'NanumMyeongjo', serif;
+            font-size: 13px;
+            color: var(--gold);
+            font-weight: 700;
+            margin-bottom: 10px;
+        }
+
+        .blog-card-title {
+            font-size: 14px;
+            color: var(--text-dark);
+            line-height: 1.6;
+            margin-bottom: 15px;
+            font-weight: 500;
+            display: -webkit-box;
+            -webkit-line-clamp: 3;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+        }
+
+        .btn-more {
+            border: 2px solid var(--primary-navy);
+            background-color: var(--white);
+            color: var(--primary-navy);
+            padding: 8px 20px;
+            border-radius: 5px;
+            font-size: 12px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.3s;
+            width: 100%;
+            text-align: center;
+        }
+
+        .btn-more:hover {
+            background-color: var(--primary-navy);
+            color: var(--white);
+        }
+
+        /* EVALUATION SECTION */
+        .evaluation-section {
+            background-color: var(--white);
+            padding: 70px 40px;
+            display: flex;
+            justify-content: center;
+            position: relative;
+        }
+
+        .evaluation-bg {
+            position: absolute;
+            right: 0;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 600px;
+            height: 600px;
+            opacity: 0.08;
+            z-index: 0;
+        }
+
+        .evaluation-bg img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .evaluation-container {
+            max-width: 1240px;
+            width: 100%;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
+            position: relative;
+            z-index: 1;
+        }
+
+        .evaluation-left {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .eval-title-group {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .eval-title-en {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 64px;
+            font-weight: 700;
+            color: var(--primary-navy);
+            letter-spacing: 2px;
+        }
+
+        .eval-title-jp {
+            font-family: 'Noto Serif JP', serif;
+            font-size: 22px;
+            font-weight: 700;
+            color: var(--primary-navy);
+            letter-spacing: 0.5px;
+        }
+
+        .eval-decorative {
+            font-family: 'Qwitcher Grypen', cursive;
+            font-size: 48px;
+            color: var(--gold);
+            transform: rotate(-9deg);
+            display: inline-block;
+            width: fit-content;
+            line-height: 1;
+        }
+
+        .evaluation-photo {
+            width: 520px;
+            height: 540px;
+            border-radius: 8px;
+            overflow: hidden;
+        }
+
+        .evaluation-photo img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .evaluation-right {
+            display: flex;
+            flex-direction: column;
+            gap: 30px;
+        }
+
+        .evaluation-text {
+            font-size: 16px;
+            line-height: 1.8;
+            color: var(--text-dark);
+        }
+
+        .highlight-number {
+            font-family: 'NanumMyeongjo', serif;
+            font-size: 72px;
+            font-weight: 800;
+            color: var(--gold);
+            line-height: 1;
+            display: inline;
+        }
+
+        .highlight-percent {
+            font-family: 'NanumMyeongjo', serif;
+            font-size: 36px;
+            font-weight: 800;
+            color: var(--gold);
+            display: inline;
+            margin-left: 5px;
+        }
+
+        .evaluation-highlight {
+            display: inline-block;
+            padding-bottom: 8px;
+            border-bottom: 3px solid var(--light-gold);
+        }
+
+        .evaluation-chart {
+            width: 100%;
+            max-width: 500px;
+            border-radius: 8px;
+            overflow: hidden;
+        }
+
+        .evaluation-chart img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        /* REASON SLIDER SECTION */
+        .reason-section {
+            background-color: var(--background);
+            padding: 70px 40px;
+            display: flex;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .reason-bg-text {
+            position: absolute;
+            left: 40px;
+            top: 50%;
+            transform: translateY(-50%);
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 200px;
+            font-weight: 700;
+            color: rgba(33, 49, 102, 0.08);
+            z-index: 0;
+            white-space: nowrap;
+            letter-spacing: 2px;
+        }
+
+        .reason-container {
+            max-width: 1240px;
+            width: 100%;
+            position: relative;
+            z-index: 1;
+        }
+
+        .reason-header {
+            margin-bottom: 50px;
+        }
+
+        .reason-label {
+            font-family: 'Noto Serif JP', serif;
+            font-size: 14px;
+            color: var(--gold);
+            font-weight: 700;
+            letter-spacing: 1px;
+            margin-bottom: 10px;
+        }
+
+        .reason-label-text {
+            color: var(--gold);
+            margin-left: 10px;
+        }
+
+        .reason-number {
+            font-family: 'NanumMyeongjo', serif;
+            font-size: 20px;
+            font-weight: 700;
+            color: var(--gold);
+        }
+
+        .reason-slider-wrapper {
+            position: relative;
+            height: 500px;
+            margin-bottom: 40px;
+        }
+
+        .reason-slide {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            opacity: 0;
+            transition: opacity 0.5s ease-in-out;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
+        }
+
+        .reason-slide.active {
+            opacity: 1;
+            position: relative;
+        }
+
+        .reason-text {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            z-index: 2;
+        }
+
+        .reason-title {
+            font-family: 'Noto Serif JP', serif;
+            font-size: 24px;
+            font-weight: 700;
+            color: var(--primary-navy);
+            line-height: 1.6;
+        }
+
+        .reason-description {
+            font-family: 'Noto Sans JP', sans-serif;
+            font-size: 17px;
+            color: var(--text-dark);
+            line-height: 1.8;
+        }
+
+        .reason-image {
+            width: 100%;
+            height: 100%;
+            border-radius: 8px;
+            overflow: hidden;
+        }
+
+        .reason-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .reason-controls {
+            display: flex;
+            gap: 30px;
+            align-items: center;
+        }
+
+        .reason-carousel {
+            display: flex;
+            gap: 20px;
+            overflow-x: auto;
+            scroll-behavior: smooth;
+            padding-bottom: 15px;
+        }
+
+        .reason-carousel::-webkit-scrollbar {
+            height: 4px;
+        }
+
+        .reason-carousel::-webkit-scrollbar-track {
+            background: rgba(33, 49, 102, 0.1);
+        }
+
+        .reason-carousel::-webkit-scrollbar-thumb {
+            background: var(--gold);
+            border-radius: 2px;
+        }
+
+        .reason-thumb {
+            min-width: 250px;
+            height: 180px;
+            border-radius: 8px;
+            overflow: hidden;
+            cursor: pointer;
+            position: relative;
+            transition: transform 0.3s;
+        }
+
+        .reason-thumb:hover {
+            transform: scale(1.05);
+        }
+
+        .reason-thumb img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .reason-thumb-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background-color: rgba(33, 49, 102, 0.4);
+            color: var(--white);
+            padding: 12px;
+            font-size: 12px;
+            font-weight: 600;
+            text-align: center;
+            line-height: 1.4;
+        }
+
+        .reason-nav {
+            display: flex;
+            gap: 10px;
+        }
+
+        .reason-nav-btn {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            border: 2px solid var(--primary-navy);
+            background-color: var(--white);
+            color: var(--primary-navy);
+            font-size: 20px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.3s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .reason-nav-btn:hover {
+            background-color: var(--primary-navy);
+            color: var(--white);
+        }
+
+        /* ENDOSCOPY MENU SECTION */
+        .menu-section {
+            background-color: var(--primary-navy);
+            padding: 70px 40px;
+            display: flex;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .menu-bg {
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 600px;
+            height: 100%;
+            opacity: 0.1;
+            z-index: 0;
+        }
+
+        .menu-bg img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .menu-container {
+            max-width: 1240px;
+            width: 100%;
+            position: relative;
+            z-index: 1;
+        }
+
+        .menu-title {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            margin-bottom: 60px;
+        }
+
+        .menu-title-jp {
+            font-family: 'Noto Serif JP', serif;
+            font-size: 28px;
+            font-weight: 700;
+            color: var(--white);
+            letter-spacing: 0.5px;
+        }
+
+        .menu-title-decorative {
+            font-family: 'Qwitcher Grypen', cursive;
+            font-size: 48px;
+            color: var(--gold);
+            transform: rotate(-9deg);
+            display: inline-block;
+            line-height: 1;
+        }
+
+        .menu-subsection {
+            margin-bottom: 80px;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
+        }
+
+        .menu-subsection:last-child {
+            margin-bottom: 0;
+        }
+
+        .menu-subsection.reverse {
+            direction: rtl;
+        }
+
+        .menu-subsection.reverse > * {
+            direction: ltr;
+        }
+
+        .menu-text {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .menu-subheading {
+            font-family: 'Noto Serif JP', serif;
+            font-size: 24px;
+            font-weight: 700;
+            color: var(--light-gold);
+            letter-spacing: 0.5px;
+        }
+
+        .menu-description {
+            font-size: 16px;
+            color: rgba(255, 255, 255, 0.9);
+            line-height: 1.8;
+        }
+
+        .menu-links {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .menu-link {
+            background-color: transparent;
+            border: 2px solid var(--white);
+            color: var(--white);
+            padding: 12px 20px;
+            border-radius: 5px;
+            font-size: 14px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+            text-align: left;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .menu-link:hover {
+            background-color: var(--white);
+            color: var(--primary-navy);
+        }
+
+        .menu-link::after {
+            content: '▼';
+            font-size: 10px;
+        }
+
+        .menu-image {
+            width: 100%;
+            height: 350px;
+            border-radius: 8px;
+            overflow: hidden;
+        }
+
+        .menu-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        /* SUBJECTS SECTION */
+        .subjects-section {
+            background-color: var(--white);
+            padding: 70px 40px;
+            display: flex;
+            justify-content: center;
+        }
+
+        .subjects-container {
+            max-width: 1240px;
+            width: 100%;
+        }
+
+        .subjects-header {
+            margin-bottom: 50px;
+        }
+
+        .subjects-title-en {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 64px;
+            font-weight: 700;
+            color: var(--primary-navy);
+            letter-spacing: 2px;
+            margin-bottom: 10px;
+        }
+
+        .subjects-title-jp {
+            font-family: 'Noto Serif JP', serif;
+            font-size: 22px;
+            font-weight: 700;
+            color: var(--primary-navy);
+            letter-spacing: 0.5px;
+        }
+
+        .subjects-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 30px;
+        }
+
+        .subject-card {
+            background-color: var(--white);
+            border-radius: 8px;
+            overflow: hidden;
+            transition: transform 0.3s, box-shadow 0.3s;
+            cursor: pointer;
+            position: relative;
+        }
+
+        .subject-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
+        }
+
+        .subject-image {
+            width: 100%;
+            height: 200px;
+            background-color: #f0f0f0;
+            overflow: hidden;
+        }
+
+        .subject-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .subject-content {
+            padding: 25px;
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+        }
+
+        .subject-name {
+            font-family: 'Noto Serif JP', serif;
+            font-size: 16px;
+            font-weight: 700;
+            color: var(--primary-navy);
+            letter-spacing: 0.3px;
+            flex: 1;
+        }
+
+        .subject-arrow {
+            color: var(--gold);
+            font-size: 18px;
+            font-weight: 700;
+            margin-left: 10px;
+        }
+
+        /* INFO SECTION */
+        .info-section {
+            background-color: var(--background);
+            padding: 70px 40px;
+            display: flex;
+            justify-content: center;
+        }
+
+        .info-container {
+            max-width: 1240px;
+            width: 100%;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
+        }
+
+        .info-doctor-photo {
+            width: 100%;
+            height: 500px;
+            border-radius: 8px;
+            overflow: hidden;
+        }
+
+        .info-doctor-photo img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .info-content {
+            display: flex;
+            flex-direction: column;
+            gap: 25px;
+        }
+
+        .info-title {
+            font-family: 'Noto Serif JP', serif;
+            font-size: 28px;
+            font-weight: 700;
+            color: var(--primary-navy);
+            letter-spacing: 0.5px;
+        }
+
+        .info-address {
+            font-size: 16px;
+            color: var(--text-dark);
+            line-height: 1.8;
+        }
+
+        .info-access {
+            display: flex;
+            gap: 40px;
+            margin-top: 15px;
+        }
+
+        .info-access-item {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .info-access-label {
+            font-size: 12px;
+            color: var(--gold);
+            font-weight: 700;
+            letter-spacing: 0.5px;
+        }
+
+        .info-access-value {
+            font-size: 16px;
+            color: var(--text-dark);
+            font-weight: 600;
+        }
+
+        /* CTA SECTION */
+        .cta-section {
+            background-color: var(--primary-navy);
+            padding: 60px 40px;
+            display: flex;
+            justify-content: center;
+            position: relative;
+        }
+
+        .cta-container {
+            max-width: 1240px;
+            width: 100%;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 80px;
+            align-items: center;
+        }
+
+        .cta-content {
+            display: flex;
+            flex-direction: column;
+            gap: 25px;
+        }
+
+        .cta-title {
+            font-family: 'Noto Serif JP', serif;
+            font-size: 32px;
+            font-weight: 700;
+            color: var(--white);
+            letter-spacing: 0.5px;
+        }
+
+        .cta-text {
+            font-size: 16px;
+            color: rgba(255, 255, 255, 0.9);
+            line-height: 1.8;
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 20px;
+            margin-top: 15px;
+        }
+
+        .btn-cta {
+            padding: 15px 40px;
+            border: none;
+            border-radius: 5px;
+            font-size: 14px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.3s;
+            letter-spacing: 0.5px;
+        }
+
+        .btn-cta-primary {
+            background-color: var(--orange);
+            color: var(--white);
+        }
+
+        .btn-cta-primary:hover {
+            background-color: #e68900;
+        }
+
+        .btn-cta-secondary {
+            background-color: var(--white);
+            color: var(--primary-navy);
+        }
+
+        .btn-cta-secondary:hover {
+            background-color: var(--light-gold);
+        }
+
+        .cta-contact {
+            display: flex;
+            flex-direction: column;
+            gap: 30px;
+            padding: 40px;
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: 8px;
+        }
+
+        .cta-phone {
+            text-align: center;
+        }
+
+        .cta-phone-label {
+            font-size: 12px;
+            color: rgba(255, 255, 255, 0.8);
+            letter-spacing: 0.5px;
+            margin-bottom: 10px;
+        }
+
+        .cta-phone-number {
+            font-family: 'NanumMyeongjo', serif;
+            font-size: 32px;
+            font-weight: 700;
+            color: var(--light-gold);
+            letter-spacing: 1px;
+        }
+
+        .cta-qr {
+            text-align: center;
+        }
+
+        .cta-qr-label {
+            font-size: 12px;
+            color: rgba(255, 255, 255, 0.8);
+            letter-spacing: 0.5px;
+            margin-bottom: 15px;
+        }
+
+        .cta-qr-code {
+            width: 120px;
+            height: 120px;
+            background-color: var(--white);
+            border-radius: 8px;
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 10px;
+            color: var(--primary-navy);
+        }
+
+        /* FOOTER */
+        footer {
+            background-color: #1a1f2e;
+            color: rgba(255, 255, 255, 0.8);
+            padding: 50px 40px;
+        }
+
+        .footer-container {
+            max-width: 1240px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 1fr;
+            gap: 40px;
+            margin-bottom: 40px;
+            padding-bottom: 30px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .footer-info {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .footer-clinic-name {
+            font-family: 'Noto Serif JP', serif;
+            font-size: 16px;
+            font-weight: 700;
+            color: var(--white);
+            letter-spacing: 0.3px;
+        }
+
+        .footer-address {
+            font-size: 13px;
+            line-height: 1.8;
+        }
+
+        .footer-column h4 {
+            font-size: 14px;
+            font-weight: 700;
+            color: var(--white);
+            margin-bottom: 12px;
+            letter-spacing: 0.3px;
+        }
+
+        .footer-links {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .footer-link {
+            font-size: 13px;
+            color: rgba(255, 255, 255, 0.8);
+            cursor: pointer;
+            transition: color 0.3s;
+        }
+
+        .footer-link:hover {
+            color: var(--gold);
+        }
+
+        .footer-bottom {
+            text-align: center;
+            font-size: 12px;
+            color: rgba(255, 255, 255, 0.6);
+        }
+
+        /* SIDE BUTTONS */
+        .side-buttons {
+            position: fixed;
+            right: 20px;
+            bottom: 100px;
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            z-index: 999;
+        }
+
+        .side-btn {
+            width: 70px;
+            height: 140px;
+            border: none;
+            border-radius: 8px;
+            color: var(--white);
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.3s;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            font-family: 'Noto Sans JP', sans-serif;
+            font-size: 11px;
+            line-height: 1.4;
+            gap: 5px;
+            writing-mode: vertical-rl;
+        }
+
+        .side-btn-line {
+            background-color: var(--green);
+        }
+
+        .side-btn-line:hover {
+            background-color: #45a049;
+        }
+
+        .side-btn-recruit {
+            background-color: var(--primary-navy);
+        }
+
+        .side-btn-recruit:hover {
+            background-color: #1a2452;
+        }
+
+        .side-btn-checkup {
+            background-color: var(--red);
+        }
+
+        .side-btn-checkup:hover {
+            background-color: #a53535;
+        }
+
+        .side-btn-icon {
+            font-size: 20px;
+            margin-bottom: 3px;
+        }
+
+        /* SCROLL TO TOP */
+        .scroll-top {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            width: 50px;
+            height: 50px;
+            background-color: var(--primary-navy);
+            color: var(--white);
+            border: none;
+            border-radius: 5px;
+            font-size: 20px;
+            cursor: pointer;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 998;
+        }
+
+        .scroll-top.show {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .scroll-top:hover {
+            background-color: var(--gold);
+        }
+
+        /* RESPONSIVE */
+        @media (max-width: 1200px) {
+            .hero-content {
+                padding: 0 40px;
+            }
+
+            .hero-badge {
+                right: 40px;
+                width: 250px;
+                height: 250px;
+            }
+
+            .hero-badge img {
+                width: 220px;
+                height: 220px;
+            }
+
+            .blog-cards {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .subjects-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .header-top {
+                padding: 0 20px;
+                height: auto;
+                flex-wrap: wrap;
+            }
+
+            .header-right {
+                order: 3;
+                width: 100%;
+                justify-content: space-between;
+            }
+
+            nav {
+                height: auto;
+            }
+
+            .nav-container {
+                gap: 20px;
+                padding: 15px 20px;
+                flex-wrap: wrap;
+            }
+
+            .hero-title {
+                font-size: 40px;
+            }
+
+            .hero-badge {
+                width: 150px;
+                height: 150px;
+                right: 20px;
+            }
+
+            .hero-banner {
+                display: none;
+            }
+
+            .news-container {
+                grid-template-columns: 1fr;
+            }
+
+            .blog-cards {
+                grid-template-columns: 1fr;
+            }
+
+            .evaluation-container {
+                grid-template-columns: 1fr;
+            }
+
+            .menu-subsection {
+                grid-template-columns: 1fr;
+            }
+
+            .subjects-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .info-container {
+                grid-template-columns: 1fr;
+            }
+
+            .cta-container {
+                grid-template-columns: 1fr;
+            }
+
+            .footer-container {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- HEADER -->
+    <header>
+        <div class="header-top">
+            <div class="header-left">
+                <div class="header-access">柏駅西口から徒歩1分</div>
+                <div class="clinic-name">セカンドラボ 内視鏡クリニック</div>
+            </div>
+            <div class="header-right">
+                <div class="header-contact">
+                    <div class="phone-number">04-7128-7855</div>
+                    <div class="hours-info">9:00～13:00 / 14:00～18:00</div>
+                </div>
+                <div class="header-buttons">
+                    <button class="btn-line">LINE</button>
+                    <button class="btn-reserve">Web予約</button>
+                </div>
+            </div>
+        </div>
+        <nav>
+            <div class="nav-container">
+                <div class="nav-item">
+                    <div class="nav-item-jp">初めての方へ</div>
+                    <div class="nav-item-en">FIRST VISIT</div>
+                </div>
+                <div class="nav-item">
+                    <div class="nav-item-jp">胃カメラ検査</div>
+                    <div class="nav-item-en">GASTROSCOPY</div>
+                </div>
+                <div class="nav-item">
+                    <div class="nav-item-jp">大腸カメラ検査</div>
+                    <div class="nav-item-en">COLONOSCOPY</div>
+                </div>
+                <div class="nav-item">
+                    <div class="nav-item-jp">大腸ポリープ切除</div>
+                    <div class="nav-item-en">POLYPECTOMY</div>
+                </div>
+                <div class="nav-item">
+                    <div class="nav-item-jp">医師紹介</div>
+                    <div class="nav-item-en">DOCTORS</div>
+                </div>
+                <div class="nav-item">
+                    <div class="nav-item-jp">医院案内</div>
+                    <div class="nav-item-en">CLINIC INFO</div>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <!-- HERO SLIDER -->
+    <section class="hero">
+        <div class="hero-slide active">
+            <div class="hero-slide-bg" style="background-image: url('assets/images/mv01_pc.png');"></div>
+            <div class="hero-content">
+                <div class="hero-text">
+                    <h1 class="hero-title">ENDOSCOPY<br>WITH LESS PAIN</h1>
+                    <p class="hero-subtitle">鎮静剤を使用してウトウト眠ったまま受けられる / 痛みと苦しさに最大限配慮した内視鏡検査</p>
+                </div>
+                <div class="hero-badge">
+                    <img src="assets/images/evaluation_photo.png" alt="95% painless">
+                </div>
+            </div>
+        </div>
+
+        <div class="hero-slide">
+            <div class="hero-slide-bg" style="background-image: url('assets/images/mv02_pc.png');"></div>
+            <div class="hero-content">
+                <div class="hero-text">
+                    <h1 class="hero-title">EXPERT CARE<br>YOU CAN TRUST</h1>
+                    <p class="hero-subtitle">検査実績の豊富な / 内視鏡学会専門医・指導医による安心安全な検査</p>
+                </div>
+                <div class="hero-badge">
+                    <img src="assets/images/badge_evisx1.png" alt="EVIS X1 System">
+                </div>
+            </div>
+        </div>
+
+        <div class="hero-slide">
+            <div class="hero-slide-bg" style="background-image: url('assets/images/mv03_pc.png');"></div>
+            <div class="hero-content">
+                <div class="hero-text">
+                    <h1 class="hero-title">SAME-DAY<br>PROCEDURES</h1>
+                    <p class="hero-subtitle">胃と大腸の同日検査、その場で大腸ポリープを切除できます</p>
+                </div>
+                <div class="hero-badge">
+                    <img src="assets/images/badge_room.png" alt="Same-day procedures">
+                </div>
+            </div>
+        </div>
+
+        <div class="hero-info-box">
+            <div class="info-label">CLINIC POINTS</div>
+            <div class="info-items">
+                <div class="info-item">柏駅「西口」から徒歩1分</div>
+                <div class="info-item">土日も検査・診療を実施</div>
+            </div>
+        </div>
+
+        <div class="hero-indicators">
+            <span class="indicator active" data-slide="0">01</span>
+            <span class="indicator" data-slide="1">02</span>
+            <span class="indicator" data-slide="2">03</span>
+        </div>
+
+        <div class="scroll-text">
+            <div class="scroll-label">scroll</div>
+            <div class="scroll-line"></div>
+        </div>
+
+        <div class="hero-banner">
+            <img src="assets/images/menu_img01.png" alt="Health Check">
+        </div>
+    </section>
+
+    <!-- BANNER LINKS SECTION -->
+    <section class="banner-section">
+        <div class="banner-container">
+            <div class="banner-link">
+                <img src="assets/images/banner_semi_private.png" alt="Semi-private rooms">
+            </div>
+            <div class="banner-link">
+                <img src="assets/images/banner_female_doctor.png" alt="Female doctor available">
+            </div>
+            <div class="banner-link">
+                <img src="assets/images/banner_manga_colon.png" alt="Colonoscopy info">
+            </div>
+            <div class="banner-link">
+                <img src="assets/images/banner_manga_gastro.png" alt="Gastroscopy info">
+            </div>
+        </div>
+    </section>
+
+    <!-- NEWS SECTION -->
+    <section class="news-section">
+        <div class="news-container">
+            <div class="news-header">
+                <h2 class="section-title-en">News</h2>
+                <h3 class="section-title-jp">新着情報</h3>
+                <button class="btn-view-all">VIEW ALL</button>
+            </div>
+            <div class="news-list">
+                <div class="news-item">
+                    <span class="news-date">2026.03.01</span>
+                    <div class="news-content">
+                        <span class="news-tag">お知らせ</span>
+                        <div class="news-title">女性医師による肛門科診察をご希望の方へ</div>
+                    </div>
+                    <span class="news-arrow">→</span>
+                </div>
+                <div class="news-item">
+                    <span class="news-date">2026.01.26</span>
+                    <div class="news-content">
+                        <span class="news-tag">お知らせ</span>
+                        <div class="news-title">3月の休診日、外来につきまして</div>
+                    </div>
+                    <span class="news-arrow">→</span>
+                </div>
+                <div class="news-item">
+                    <span class="news-date">2025.11.17</span>
+                    <div class="news-content">
+                        <span class="news-tag">お知らせ</span>
+                        <div class="news-title">千葉テレビ（11月17日㈪）に当院が紹介されました</div>
+                    </div>
+                    <span class="news-arrow">→</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- BLOG SECTION -->
+    <section class="blog-section">
+        <div class="blog-container">
+            <div class="blog-header">
+                <div class="blog-title-group">
+                    <h2 class="blog-header-en">Blog</h2>
+                    <h3 class="blog-header-jp">内視鏡のお困りナビ</h3>
+                </div>
+                <button class="btn-view-all">VIEW ALL</button>
+            </div>
+            <div class="blog-cards">
+                <div class="blog-card">
+                    <div class="blog-thumbnail">
+                        <img src="assets/images/blog01.png" alt="Blog post 1">
+                    </div>
+                    <div class="blog-card-content">
+                        <div class="blog-card-date">2024.07.10</div>
+                        <div class="blog-card-title">直腸がんに痛みはある？症状や対処法について解説します</div>
+                        <button class="btn-more">MORE</button>
+                    </div>
+                </div>
+                <div class="blog-card">
+                    <div class="blog-thumbnail">
+                        <img src="assets/images/blog02.png" alt="Blog post 2">
+                    </div>
+                    <div class="blog-card-content">
+                        <div class="blog-card-date">2024.07.07</div>
+                        <div class="blog-card-title">直腸がんの発症リスクを高める習慣や食生活とは</div>
+                        <button class="btn-more">MORE</button>
+                    </div>
+                </div>
+                <div class="blog-card">
+                    <div class="blog-thumbnail">
+                        <img src="assets/images/blog03.png" alt="Blog post 3">
+                    </div>
+                    <div class="blog-card-content">
+                        <div class="blog-card-date">2024.07.04</div>
+                        <div class="blog-card-title">大腸がんのステージ別症状と治療法について</div>
+                        <button class="btn-more">MORE</button>
+                    </div>
+                </div>
+                <div class="blog-card">
+                    <div class="blog-thumbnail">
+                        <img src="assets/images/blog04.png" alt="Blog post 4">
+                    </div>
+                    <div class="blog-card-content">
+                        <div class="blog-card-date">2024.07.01</div>
+                        <div class="blog-card-title">直腸がんの進行速度って速いの？早期発見の重要性</div>
+                        <button class="btn-more">MORE</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- EVALUATION SECTION -->
+    <section class="evaluation-section">
+        <div class="evaluation-bg">
+            <img src="assets/images/Background.png" alt="Background pattern">
+        </div>
+        <div class="evaluation-container">
+            <div class="evaluation-left">
+                <div class="eval-title-group">
+                    <h2 class="eval-title-en">ENDOSCOPY</h2>
+                    <h3 class="eval-title-jp">内視鏡検査に対する評価</h3>
+                </div>
+                <div class="eval-decorative">Evaluation</div>
+                <div class="evaluation-photo">
+                    <img src="assets/images/evaluation_photo.png" alt="Patient evaluation">
+                </div>
+            </div>
+            <div class="evaluation-right">
+                <p class="evaluation-text">当院で検査を受けられた <span class="highlight-number">95</span><span class="highlight-percent">％</span>以上の方が「<span class="evaluation-highlight">まったく痛くなかった</span>」とお答えいただいております。</p>
+                <div class="evaluation-chart">
+                    <img src="assets/images/evaluation_chart.png" alt="Evaluation chart">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- REASON SLIDER SECTION -->
+    <section class="reason-section">
+        <div class="reason-bg-text">Reason</div>
+        <div class="reason-container">
+            <div class="reason-header">
+                <div class="reason-label">
+                    <span class="reason-number">— 01</span>
+                    <span class="reason-label-text">選ばれる理由</span>
+                </div>
+            </div>
+            <div class="reason-slider-wrapper">
+                <div class="reason-slide active">
+                    <div class="reason-text">
+                        <h3 class="reason-title">数多くの検査実績を誇る消化器内視鏡学会専門医・指導医在籍</h3>
+                        <p class="reason-description">当院には日本消化器内視鏡学会の専門医・指導医が在籍しており、数多くの検査実績に基づいた安全で確実な内視鏡検査をご提供いたします。</p>
+                    </div>
+                    <div class="reason-image">
+                        <img src="assets/images/reason01.png" alt="Expert doctors">
+                    </div>
+                </div>
+
+                <div class="reason-slide">
+                    <div class="reason-text">
+                        <h3 class="reason-title">静脈麻酔を用いるため、苦痛に最大限配慮することができます</h3>
+                        <p class="reason-description">当院では静脈麻酔を使用した検査を行っており、患者様が眠ったままリラックスして検査を受けられるよう配慮しています。</p>
+                    </div>
+                    <div class="reason-image">
+                        <img src="assets/images/reason02.png" alt="Anesthesia care">
+                    </div>
+                </div>
+
+                <div class="reason-slide">
+                    <div class="reason-text">
+                        <h3 class="reason-title">二酸化炭素でお腹の張りを軽減し、楽に検査できます</h3>
+                        <p class="reason-description">従来の空気の代わりに二酸化炭素を用いることで、検査後のお腹の張りや不快感を大幅に軽減できます。</p>
+                    </div>
+                    <div class="reason-image">
+                        <img src="assets/images/reason03.png" alt="CO2 insufflation">
+                    </div>
+                </div>
+
+                <div class="reason-slide">
+                    <div class="reason-text">
+                        <h3 class="reason-title">最先端内視鏡システム「EVIS X1」を導入 負担を最小化し、微細な病変を早期発見できます</h3>
+                        <p class="reason-description">EVIS X1は最新の光学技術により、従来の内視鏡では見落としやすい微細な病変を高い精度で検出できます。</p>
+                    </div>
+                    <div class="reason-image">
+                        <img src="assets/images/reason04.png" alt="EVIS X1 System">
+                    </div>
+                </div>
+
+                <div class="reason-slide">
+                    <div class="reason-text">
+                        <h3 class="reason-title">リカバリースペース完備で鎮静剤が抜けるまでお休みできます</h3>
+                        <p class="reason-description">検査後は専用のリカバリースペースで安全に鎮静剤の効果が切れるまでお休みいただけます。</p>
+                    </div>
+                    <div class="reason-image">
+                        <img src="assets/images/reason05.png" alt="Recovery space">
+                    </div>
+                </div>
+            </div>
+
+            <div class="reason-controls">
+                <div class="reason-carousel" id="reasonCarousel">
+                    <div class="reason-thumb" data-slide="0">
+                        <img src="assets/images/reason01.png" alt="Reason 1">
+                        <div class="reason-thumb-overlay">検査実績豊富な専門医</div>
+                    </div>
+                    <div class="reason-thumb" data-slide="1">
+                        <img src="assets/images/reason02.png" alt="Reason 2">
+                        <div class="reason-thumb-overlay">静脈麻酔で快適に</div>
+                    </div>
+                    <div class="reason-thumb" data-slide="2">
+                        <img src="assets/images/reason03.png" alt="Reason 3">
+                        <div class="reason-thumb-overlay">CO2で腹部膨満感軽減</div>
+                    </div>
+                    <div class="reason-thumb" data-slide="3">
+                        <img src="assets/images/reason04.png" alt="Reason 4">
+                        <div class="reason-thumb-overlay">最先端システムEVIS X1</div>
+                    </div>
+                    <div class="reason-thumb" data-slide="4">
+                        <img src="assets/images/reason05.png" alt="Reason 5">
+                        <div class="reason-thumb-overlay">充実したリカバリースペース</div>
+                    </div>
+                </div>
+                <div class="reason-nav">
+                    <button class="reason-nav-btn" id="reasonPrev">❮</button>
+                    <button class="reason-nav-btn" id="reasonNext">❯</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ENDOSCOPY MENU SECTION -->
+    <section class="menu-section">
+        <div class="menu-bg">
+            <img src="assets/images/Background-1.png" alt="Menu background">
+        </div>
+        <div class="menu-container">
+            <div class="menu-title">
+                <h2 class="menu-title-jp">内視鏡検査のご案内</h2>
+                <div class="menu-title-decorative">Menu</div>
+            </div>
+
+            <div class="menu-subsection">
+                <div class="menu-text">
+                    <h3 class="menu-subheading">胃カメラ検査</h3>
+                    <p class="menu-description">当院の胃カメラ検査は、患者様の負担を最小限に考えた検査方法を採用しています。静脈麻酔を使用するため、眠ったままリラックスして検査を受けることができます。経験豊富な医師による丁寧な診察で、早期発見と適切な治療をサポートいたします。</p>
+                    <div class="menu-links">
+                        <button class="menu-link">当院の胃カメラ検査について</button>
+                        <button class="menu-link">胃カメラ検査の料金について</button>
+                    </div>
+                </div>
+                <div class="menu-image">
+                    <img src="assets/images/gastroscope.png" alt="Gastroscopy">
+                </div>
+            </div>
+
+            <div class="menu-subsection reverse">
+                <div class="menu-text">
+                    <h3 class="menu-subheading">大腸カメラ検査</h3>
+                    <p class="menu-description">大腸カメラ検査は、大腸内のポリープや早期がんの発見に非常に有効です。当院では最新のEVIS X1システムを導入し、微細な病変も見落とさない精密検査をご提供しています。検査中に病変が見つかった場合は、その場でポリープ切除も可能です。</p>
+                    <div class="menu-links">
+                        <button class="menu-link">当院の大腸カメラ検査について</button>
+                        <button class="menu-link">大腸ポリープ切除について</button>
+                        <button class="menu-link">大腸カメラ検査の料金について</button>
+                    </div>
+                </div>
+                <div class="menu-image">
+                    <img src="assets/images/endoscopy.png" alt="Colonoscopy">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SUBJECTS SECTION -->
+    <section class="subjects-section">
+        <div class="subjects-container">
+            <div class="subjects-header">
+                <h2 class="subjects-title-en">Medical Subjects</h2>
+                <h3 class="subjects-title-jp">診療内容</h3>
+            </div>
+            <div class="subjects-grid">
+                <div class="subject-card">
+                    <div class="subject-image">
+                        <img src="assets/images/reason01.png" alt="Gastroscopy">
+                    </div>
+                    <div class="subject-content">
+                        <div class="subject-name">胃カメラ検査</div>
+                        <div class="subject-arrow">→</div>
+                    </div>
+                </div>
+                <div class="subject-card">
+                    <div class="subject-image">
+                        <img src="assets/images/reason02.png" alt="Colonoscopy">
+                    </div>
+                    <div class="subject-content">
+                        <div class="subject-name">大腸カメラ検査</div>
+                        <div class="subject-arrow">→</div>
+                    </div>
+                </div>
+                <div class="subject-card">
+                    <div class="subject-image">
+                        <img src="assets/images/reason03.png" alt="Polypectomy">
+                    </div>
+                    <div class="subject-content">
+                        <div class="subject-name">大腸ポリープ切除</div>
+                        <div class="subject-arrow">→</div>
+                    </div>
+                </div>
+                <div class="subject-card">
+                    <div class="subject-image">
+                        <img src="assets/images/reason04.png" alt="Small bowel">
+                    </div>
+                    <div class="subject-content">
+                        <div class="subject-name">小腸カプセル内視鏡</div>
+                        <div class="subject-arrow">→</div>
+                    </div>
+                </div>
+                <div class="subject-card">
+                    <div class="subject-image">
+                        <img src="assets/images/reason05.png" alt="Treatment">
+                    </div>
+                    <div class="subject-content">
+                        <div class="subject-name">内視鏡的治療</div>
+                        <div class="subject-arrow">→</div>
+                    </div>
+                </div>
+                <div class="subject-card">
+                    <div class="subject-image">
+                        <img src="assets/images/blog01.png" alt="Proctology">
+                    </div>
+                    <div class="subject-content">
+                        <div class="subject-name">肛門科診察</div>
+                        <div class="subject-arrow">→</div>
+                    </div>
+                </div>
+                <div class="subject-card">
+                    <div class="subject-image">
+                        <img src="assets/images/blog02.png" alt="Health checkup">
+                    </div>
+                    <div class="subject-content">
+                        <div class="subject-name">健康診断</div>
+                        <div class="subject-arrow">→</div>
+                    </div>
+                </div>
+                <div class="subject-card">
+                    <div class="subject-image">
+                        <img src="assets/images/blog03.png" alt="Disease prevention">
+                    </div>
+                    <div class="subject-content">
+                        <div class="subject-name">疾病予防</div>
+                        <div class="subject-arrow">→</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- INFO SECTION -->
+    <section class="info-section">
+        <div class="info-container">
+            <div class="info-doctor-photo">
+                <img src="assets/images/evaluation_photo.png" alt="Doctor">
+            </div>
+            <div class="info-content">
+                <h2 class="info-title">セカンドラボ 内視鏡クリニック</h2>
+                <p class="info-address">
+                    柏駅西口から徒歩1分の好立地にあるセカンドラボ 内視鏡クリニックです。<br>
+                    当院では、患者様の苦痛を最小限に抑えた内視鏡検査を心がけています。<br>
+                    経験豊富な医師と最新の医療機器により、安心で安全な診療環境をご提供いたします。
+                </p>
+                <div class="info-access">
+                    <div class="info-access-item">
+                        <div class="info-access-label">住所</div>
+                        <div class="info-access-value">千葉県柏市柏1-2-3 柏第一ビル 2階</div>
+                    </div>
+                    <div class="info-access-item">
+                        <div class="info-access-label">電話</div>
+                        <div class="info-access-value">04-7128-7855</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA SECTION -->
+    <section class="cta-section">
+        <div class="cta-container">
+            <div class="cta-content">
+                <h2 class="cta-title">今すぐご予約ください</h2>
+                <p class="cta-text">当院では、患者様のご都合の良い時間でのご予約をお受けしています。初めての方もお気軽にお電話またはWeb予約をご利用ください。</p>
+                <div class="cta-buttons">
+                    <button class="btn-cta btn-cta-primary">Web予約はこちら</button>
+                    <button class="btn-cta btn-cta-secondary">お電話でのご予約</button>
+                </div>
+            </div>
+            <div class="cta-contact">
+                <div class="cta-phone">
+                    <div class="cta-phone-label">お電話での予約・お問い合わせ</div>
+                    <div class="cta-phone-number">04-7128-7855</div>
+                    <div style="font-size: 12px; color: rgba(255, 255, 255, 0.8); margin-top: 8px;">9:00～13:00 / 14:00～18:00 土日祝も対応</div>
+                </div>
+                <div class="cta-qr">
+                    <div class="cta-qr-label">LINEで友達追加・予約</div>
+                    <div class="cta-qr-code">QR CODE</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer>
+        <div class="footer-container">
+            <div class="footer-info">
+                <div class="footer-clinic-name">セカンドラボ 内視鏡クリニック</div>
+                <div class="footer-address">
+                    〒277-0005 千葉県柏市柏1-2-3 柏第一ビル 2階<br>
+                    Tel: 04-7128-7855<br>
+                    9:00～13:00 / 14:00～18:00（土日祝も対応）
+                </div>
+            </div>
+            <div class="footer-column">
+                <h4>診療内容</h4>
+                <div class="footer-links">
+                    <span class="footer-link">胃カメラ検査</span>
+                    <span class="footer-link">大腸カメラ検査</span>
+                    <span class="footer-link">ポリープ切除</span>
+                    <span class="footer-link">肛門科診察</span>
+                </div>
+            </div>
+            <div class="footer-column">
+                <h4>当院について</h4>
+                <div class="footer-links">
+                    <span class="footer-link">医師紹介</span>
+                    <span class="footer-link">医院案内</span>
+                    <span class="footer-link">アクセス</span>
+                    <span class="footer-link">よくある質問</span>
+                </div>
+            </div>
+            <div class="footer-column">
+                <h4>その他</h4>
+                <div class="footer-links">
+                    <span class="footer-link">プライバシーポリシー</span>
+                    <span class="footer-link">利用規約</span>
+                    <span class="footer-link">お問い合わせ</span>
+                    <span class="footer-link">求人情報</span>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2024 セカンドラボ 内視鏡クリニック All Rights Reserved.</p>
+        </div>
+    </footer>
+
+    <!-- SIDE BUTTONS -->
+    <div class="side-buttons">
+        <button class="side-btn side-btn-line">
+            <span class="side-btn-icon">💬</span>
+            <span>LINEで予約する</span>
+        </button>
+        <button class="side-btn side-btn-recruit">
+            <span class="side-btn-icon">👔</span>
+            <span>求人情報</span>
+        </button>
+        <button class="side-btn side-btn-checkup">
+            <span class="side-btn-icon">🏥</span>
+            <span>健診・人間ドック</span>
+        </button>
+    </div>
+
+    <!-- SCROLL TO TOP BUTTON -->
+    <button class="scroll-top" id="scrollTop">↑</button>
+
+    <script>
+        // HERO SLIDER
+        let currentSlide = 0;
+        const slides = document.querySelectorAll('.hero-slide');
+        const indicators = document.querySelectorAll('.indicator');
+
+        function showSlide(n) {
+            slides.forEach(slide => slide.classList.remove('active'));
+            indicators.forEach(ind => ind.classList.remove('active'));
+
+            slides[n].classList.add('active');
+            indicators[n].classList.add('active');
+            currentSlide = n;
+        }
+
+        function nextSlide() {
+            showSlide((currentSlide + 1) % slides.length);
+        }
+
+        // Auto-play hero slider every 5 seconds
+        setInterval(nextSlide, 5000);
+
+        // Click on indicators
+        indicators.forEach(indicator => {
+            indicator.addEventListener('click', () => {
+                showSlide(parseInt(indicator.dataset.slide));
+            });
+        });
+
+        // REASON SLIDER
+        let reasonCurrentSlide = 0;
+        const reasonSlides = document.querySelectorAll('.reason-slide');
+        const reasonThumbs = document.querySelectorAll('.reason-thumb');
+
+        function showReasonSlide(n) {
+            reasonSlides.forEach(slide => slide.classList.remove('active'));
+            reasonSlides[n].classList.add('active');
+            reasonCurrentSlide = n;
+
+            // Update carousel position
+            const carousel = document.getElementById('reasonCarousel');
+            const thumb = reasonThumbs[n];
+            carousel.scrollLeft = thumb.offsetLeft - carousel.offsetLeft - 50;
+        }
+
+        reasonThumbs.forEach((thumb, index) => {
+            thumb.addEventListener('click', () => {
+                showReasonSlide(index);
+            });
+        });
+
+        document.getElementById('reasonNext').addEventListener('click', () => {
+            showReasonSlide((reasonCurrentSlide + 1) % reasonSlides.length);
+        });
+
+        document.getElementById('reasonPrev').addEventListener('click', () => {
+            showReasonSlide((reasonCurrentSlide - 1 + reasonSlides.length) % reasonSlides.length);
+        });
+
+        // SCROLL TO TOP
+        const scrollTopBtn = document.getElementById('scrollTop');
+
+        window.addEventListener('scroll', () => {
+            if (window.pageYOffset > 300) {
+                scrollTopBtn.classList.add('show');
+            } else {
+                scrollTopBtn.classList.remove('show');
+            }
+        });
+
+        scrollTopBtn.addEventListener('click', () => {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
+
+        // SMOOTH SCROLL
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({ behavior: 'smooth' });
+                }
+            });
+        });
+
+        // MENU LINK EXPANDERS
+        document.querySelectorAll('.menu-link').forEach(link => {
+            link.addEventListener('click', () => {
+                link.classList.toggle('active');
+            });
+        });
+
+        // SUBJECT CARD INTERACTIONS
+        document.querySelectorAll('.subject-card').forEach(card => {
+            card.addEventListener('click', () => {
+                // Could navigate to subject page
+                console.log('Subject clicked');
+            });
+        });
+
+        // BLOG CARD INTERACTIONS
+        document.querySelectorAll('.blog-card').forEach(card => {
+            card.addEventListener('click', () => {
+                // Could navigate to blog post
+                console.log('Blog post clicked');
+            });
+        });
+
+        // NEWS ITEM INTERACTIONS
+        document.querySelectorAll('.news-item').forEach(item => {
+            item.addEventListener('click', () => {
+                // Could navigate to news detail
+                console.log('News item clicked');
+            });
+        });
+
+        // BANNER LINK INTERACTIONS
+        document.querySelectorAll('.banner-link').forEach(banner => {
+            banner.addEventListener('click', () => {
+                // Could navigate to relevant page
+                console.log('Banner clicked');
+            });
+        });
+
+        // NAV ITEM INTERACTIONS
+        document.querySelectorAll('.nav-item').forEach(item => {
+            item.addEventListener('click', () => {
+                // Could scroll to section or navigate
+                console.log('Nav item clicked');
+            });
+        });
+
+        // HEADER BUTTON INTERACTIONS
+        document.querySelectorAll('.btn-line').forEach(btn => {
+            btn.addEventListener('click', () => {
+                console.log('LINE button clicked - would open LINE');
+            });
+        });
+
+        document.querySelectorAll('.btn-reserve').forEach(btn => {
+            btn.addEventListener('click', () => {
+                console.log('Web reservation clicked - would open booking');
+            });
+        });
+
+        // CTA SECTION BUTTON INTERACTIONS
+        document.querySelectorAll('.btn-cta').forEach(btn => {
+            btn.addEventListener('click', function() {
+                if (this.classList.contains('btn-cta-primary')) {
+                    console.log('Web reservation - would open booking page');
+                } else {
+                    console.log('Phone reservation - would show phone interface');
+                }
+            });
+        });
+
+        // SIDE BUTTON INTERACTIONS
+        document.querySelectorAll('.side-btn').forEach(btn => {
+            btn.addEventListener('click', function() {
+                if (this.classList.contains('side-btn-line')) {
+                    console.log('LINE - would open LINE app');
+                } else if (this.classList.contains('side-btn-recruit')) {
+                    console.log('Recruit info - would open jobs page');
+                } else {
+                    console.log('Health checkup - would open checkup info');
+                }
+            });
+        });
+
+        // Initialize first reason slide
+        showReasonSlide(0);
+    </script>
+</body>
+</html>
