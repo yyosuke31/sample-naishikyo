@@ -2221,7 +2221,7 @@
                 <div class="section-title-jp">最新のお知らせ</div>
                 <button class="btn-view-all">一覧を見る</button>
             </div>
-            <div class="news-list">
+            <div class="news-list" id="news-list">
                 <div class="news-item">
                     <div class="news-date">2024.01.15</div>
                     <div class="news-title">新しい検査機器が導入されました</div>
@@ -2682,6 +2682,29 @@
 
         // Initialize first reason slide
         showReasonSlide(0);
+        // microCMS お知らせ取得
+fetch('https://【サービスID】.microcms.io/api/v1/news?limit=4', {
+  headers: {
+    'X-MICROCMS-API-KEY': '【APIキー】'
+  }
+})
+.then(res => res.json())
+.then(data => {
+  const list = document.getElementById('news-list');
+  if (!data.contents || data.contents.length === 0) return;
+  list.innerHTML = data.contents.map(item => {
+    const date = item.publishedAt
+      ? item.publishedAt.slice(0, 10).replace(/-/g, '.')
+      : '';
+    return `
+      <div class="news-item">
+        <div class="news-date">${date}</div>
+        <div class="news-title">${item.title}</div>
+      </div>
+    `;
+  }).join('');
+})
+.catch(err => console.error('microCMS取得エラー:', err));
     </script>
 </body>
 </html>
